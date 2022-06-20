@@ -54,9 +54,10 @@ class MenuTabbedInterfaceMixin:
                 ObjectList(self.model.settings_panels, heading=_("Settings"),
                            classname="settings"),
             ])
-        if hasattr(edit_handler, 'bind_to'):
+        # fix TabbedInterface.bind_to_model(model) must be called before get_bound_panel
+        #if hasattr(edit_handler, 'bind_to'):
             # For Wagtail>=2.5
-            return edit_handler.bind_to(model=self.model)
+            #return edit_handler.bind_to(model=self.model)
         return edit_handler.bind_to_model(self.model)
 
     def form_invalid(self, form):
